@@ -1,21 +1,26 @@
 <template>
   <div class="container">
-    <h1>音乐发烧友</h1>
+    <h1>声动</h1>
     <input v-model="songname" placeholder="留下您最想听的歌" />
-    <button @click="getPlayUrl">播放</button>
-    <audio ref="audioRef" controls></audio>
+<button @click="getPlayUrl">
+  <img src="@/assets/imgs/search.png" alt="搜索" style="width:100px; height:100px;">
+</button>
+    <!-- 使用播放器组件 -->
+    <AudioPlayer :audioUrl="audioSrc" :isPauseTtsAudio="isPauseTtsAudio" />
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
+import AudioPlayer from './AudioPlayer.vue'
 
 const songname = ref('')
-const audioRef = ref(null)
+const audioSrc = ref('') // 音频链接
+const isPauseTtsAudio = ref(false) // 控制是否暂停播放试听
 
 const getPlayUrl = async () => {
-  if (!songname.value) {
+  if (!songname.value.trim()) {
     alert('好像还没有写')
     return
   }
@@ -32,11 +37,9 @@ const getPlayUrl = async () => {
     const playUrl = resData[firstKey]
 
     if (playUrl) {
-      const audio = audioRef.value
-      audio.src = playUrl
-      await audio.play()
+      audioSrc.value = playUrl
+      isPauseTtsAudio.value = false // 确保播放不被暂停
     } else {
-      console.error('未获取到播放链接')
       alert('未获取到播放链接')
     }
   } catch (err) {
@@ -45,26 +48,49 @@ const getPlayUrl = async () => {
   }
 }
 </script>
-
 <style scoped>
 .container {
-  padding: 20px;
-  font-family: Arial, sans-serif;
+  min-height: 100vh; /* 撑满整个屏幕高度 */
   background-color: #000;
-  color: white;
-  min-height: 100vh;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
 input {
-  padding: 8px;
-  margin-right: 10px;
-  color: black;
-}
-button {
   padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  margin-top: 10px;
+  width: 80%;
+  font-size: 16px;
 }
-audio {
-  display: block;
-  margin-top: 20px;
-  width: 100%;
+
+button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #000000;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #000000;
+}
+</style>
+
+<style>
+/* 全局样式：页面背景彻底黑色，无边界 */
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #fff;
+  font-family: sans-serif;
 }
 </style>
