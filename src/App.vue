@@ -1,16 +1,16 @@
 <template>
-  <MusicSearchPlayer />
-
+  <!-- <MusicSearchPlayer /> -->
+  <APlayerWrapper />
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-import MusicSearchPlayer from './components/PlayMusic.vue'
-
+// import MusicSearchPlayer from './components/PlayMusic.vue'
+import APlayerWrapper from './components/APlayerWrapper.vue'
 export default {
   name: 'App',
   components: {
-    MusicSearchPlayer
+    // MusicSearchPlayer,
+    APlayerWrapper
   }
 }
 </script>
@@ -24,4 +24,6 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+
 </style>

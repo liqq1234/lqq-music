@@ -8,9 +8,10 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "aplayer": "^1.10.1",
     "axios": "^1.9.0",
     "core-js": "^3.8.3",
-    "element-plus": "^2.9.10",
+    "element-plus": "^2.9.11",
     "lqq-music": "file:",
     "vue": "^3.2.13"
   },
