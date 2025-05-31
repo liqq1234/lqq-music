@@ -1,16 +1,15 @@
 <template>
-  <!-- <MusicSearchPlayer /> -->
-  <APlayerWrapper />
+  <AppLayout>
+  </AppLayout>
 </template>
 
 <script>
-// import MusicSearchPlayer from './components/PlayMusic.vue'
-import APlayerWrapper from './components/APlayerWrapper.vue'
+import AppLayout from './layouts/AppLayout.vue'
+
 export default {
   name: 'App',
   components: {
-    // MusicSearchPlayer,
-    APlayerWrapper
+    AppLayout
   }
 }
 </script>
@@ -22,8 +21,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
-
-
 </style>

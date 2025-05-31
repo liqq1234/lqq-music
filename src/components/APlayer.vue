@@ -1,8 +1,19 @@
 <template>
   <div>
-        <h1>声动</h1>
-    <el-input v-model="songname" placeholder="请留下最想听的歌" style="width: 240px" />
-    <el-button type="primary" @click="getPlayUrl">播放</el-button>
+    <h1 class="classical-title">声动</h1>
+    <el-space :size="10" direction="horizontal" alignment="center">
+  <el-input v-model="songname" placeholder="请留下最想听的歌" style="width: 240px" />
+  <el-button type="primary" @click="getPlayUrl" >
+    <el-icon><Search /></el-icon>
+  </el-button>
+  <el-button
+    style="background-color: #FFE066; border-color:#FFE066; color: white;"
+    @click="getPlayUrl"
+  >
+   <el-icon><Star /></el-icon>
+  </el-button>
+  </el-space>
+
    <div
     id="aplayer"
     ref="aplayer"
@@ -70,3 +81,12 @@ const getPlayUrl = async () => {
   }
 }
 </script>
+<style scoped>
+.classical-title {
+  font-family: 'Cinzel', serif;
+  font-size: 36px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+</style>
+
